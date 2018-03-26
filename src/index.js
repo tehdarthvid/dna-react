@@ -15,18 +15,14 @@ class Card extends React.Component {
             mouseY: 0,
             fnMouseLeaveDelay: null,
 		}
-		
-        this.onClick = this.onClick.bind(this);
-        //this.onClick = this.onMouseLeave.bind(this);
-		//this.onMouseMove = this.onMouseMove.bind(this);
 	}
 	
-	onClick(event) {
+	onClick = (event) => {
 		console.log(this.props.title + " click: " + event.clientX + ", " + event.clientY);
 	}
 	
 	onMouseMove = (evt) => {
-        //console.log(this.props.title + " move: " + event.clientX + ", " + event.clientY);
+        //console.log(this.props.title + " move: " + evt.clientX + ", " + evt.clientY);
         this.setState({mouseX: evt.clientX, mouseY: evt.clientY});
     }
     
@@ -35,11 +31,13 @@ class Card extends React.Component {
     }
     
     onMouseLeave = () => {
-        var _this = this;
+		var _this = this;
+		
         this.setState({fnMouseLeaveDelay: setTimeout(function () {
                 _this.setState({mouseX: 0, mouseY: 0});
             }, 1000)
-        });
+		});
+		console.log(this.props.title + " mouseLeave");
 	}
     
     getCardStyle() {
@@ -80,39 +78,41 @@ class Card extends React.Component {
             if (0 !== this.state.mouseX) {
                 cardMidX = rect.width / 2;
                 tX = (this.state.mouseX - rect.left - cardMidX)
-                    / cardMidX * -20;
+                    / cardMidX * -40;
             }
             if (0 !== this.state.mouseY) {
                 cardMidY = rect.height / 2;
                 tY = (this.state.mouseY - rect.top - cardMidY)
-                    / cardMidY * -20;
+                    / cardMidY * -40;
             }
         }
         
 		return {
             transform: 'translate(' + tX + 'px, ' + tY + 'px)',
-			backgroundImage: 'url(' + this.props.bgImage + ')',
+			//backgroundImage: 'url(' + this.props.bgImage + ')',
 		};
 		
 	}
 	
 	render() {
 		return (
-			<div className="card-wrap">
-                <div className="card" ref="card" style={this.getCardStyle()} 
-                        onClick={this.onClick} 
-                        onMouseMove={this.onMouseMove}
-                        onMouseEnter={this.onMouseEnter}
-                        onMouseLeave={this.onMouseLeave}
-                        >
-					<div className="card-bg" style={this.getCardBgStyle()}></div>
+			<div className="card-wrap"
+				onMouseEnter={this.onMouseEnter}
+				onMouseLeave={this.onMouseLeave}
+				onMouseMove={this.onMouseMove}
+				onClick={this.onClick} 
+				>
+                <div className="card" ref="card" style={this.getCardStyle()}>
+					<div className="card-bg" style={this.getCardBgStyle()}>
+						<img className="card-img" src={this.props.bgImage}></img>
+					</div>
 					<div className="card-info">
 						<h1>{this.props.title}</h1>
 						<p>{this.props.date}</p>
 					</div>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
@@ -130,8 +130,6 @@ class Deck extends React.Component {
 						/>);
 				}),
 		}
-		//console.log(this.props.cardList);
-		//console.log(this.state.cards);
 	}
 	
 	render() {
@@ -181,7 +179,8 @@ const cardList = [
 	},
 	{
 		title	: "ドラゴンボールZ",
-		bgImage	: "https://vignette.wikia.nocookie.net/dragonball/images/3/37/TheZFighters03.png/revision/latest/scale-to-width-down/1000?cb=20150621010223",
+		//bgImage	: "https://vignette.wikia.nocookie.net/dragonball/images/3/37/TheZFighters03.png/revision/latest/scale-to-width-down/1000?cb=20150621010223",
+		bgImage	: "https://i.ytimg.com/vi/ISBe8FcWCXI/maxresdefault.jpg",
 		date	: "26 Apr 1989 – 31 Jan 1996",
 	},
 	{
@@ -261,7 +260,7 @@ const cardList = [
 		date	: "3 Jul 2009 - 25 Jun 2010",
 	},
 	{
-		title	: "魔法少女まどか☆マギカ",
+		title	: "魔法少女まどか ☆マギカ",
 		bgImage	: "https://s3-ap-northeast-1.amazonaws.com/sk2q169cx9pfoawet3et/ditim/2011.01.07+%E3%80%8C%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E3%81%BE%E3%81%A9%E3%81%8B%E2%98%86%E3%83%9E%E3%82%AE%E3%82%AB%E3%80%8D+4744f30136df1ad1e6c012b5a1cda5ea.jpg",
 		date	: "7 Jan 2011 - 21 Apr 2011",
 	},
