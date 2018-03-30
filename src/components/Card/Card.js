@@ -31,7 +31,7 @@ class Card extends React.Component {
     }
     
     onMouseLeave = () => {
-		var _this = this;
+		let _this = this;
 		
         this.setState({fnMouseLeaveDelay: setTimeout(function () {
                 _this.setState({mouseX: 0, mouseY: 0});
@@ -41,21 +41,21 @@ class Card extends React.Component {
 	}
     
     getCardStyle() {
-        var rX = 0;
-        var rY = 0;
+        let rX = 0;
+        let rY = 0;
 
         if (undefined !== this.refs.card) {
-            var cardMidX = 0;
-            var cardMidY = 0;
-            var rect = this.refs.card.getBoundingClientRect();
+            //let cardMidX = 0;
+            //let cardMidY = 0;
+            let rect = this.refs.card.getBoundingClientRect();
 
             if (0 !== this.state.mouseX) {
-                cardMidX = rect.width / 2;
+                let cardMidX = rect.width / 2;
                 rX = (this.state.mouseX - rect.left - cardMidX)
                     / cardMidX * 30;
             }
             if (0 !== this.state.mouseY) {
-                cardMidY = rect.height / 2;
+                let cardMidY = rect.height / 2;
                 rY = (this.state.mouseY - rect.top - cardMidY)
                     / cardMidY * -30;
             }
@@ -67,21 +67,21 @@ class Card extends React.Component {
     }
     
 	getCardBgStyle() {
-        var tX = 0;
-        var tY = 0;
+        let tX = 0;
+        let tY = 0;
         
         if (undefined !== this.refs.card) {
-            var cardMidX = 0;
-            var cardMidY = 0;
-            var rect = this.refs.card.getBoundingClientRect();
+            //let cardMidX = 0;
+            //let cardMidY = 0;
+            let rect = this.refs.card.getBoundingClientRect();
 
             if (0 !== this.state.mouseX) {
-                cardMidX = rect.width / 2;
+                let cardMidX = rect.width / 2;
                 tX = (this.state.mouseX - rect.left - cardMidX)
                     / cardMidX * -40;
             }
             if (0 !== this.state.mouseY) {
-                cardMidY = rect.height / 2;
+                let cardMidY = rect.height / 2;
                 tY = (this.state.mouseY - rect.top - cardMidY)
                     / cardMidY * -40;
             }
