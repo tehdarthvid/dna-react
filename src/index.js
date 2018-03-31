@@ -4,12 +4,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-import Deck from "./components/Deck/Deck";
-
 //import registerServiceWorker from './registerServiceWorker';
 
-import cardList from "./input.js";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
 
-ReactDOM.render(<Deck cardList={cardList} />, document.getElementById("root"));
+//import Header from "./components/Header/Header";
+import ActiveDeckContainer from "./containers/ActiveDeckContainer";
+
+const store = configureStore();
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+      <ActiveDeckContainer />
+    </div>
+  </Provider>,
+  document.getElementById("root")
+);
 
 //registerServiceWorker();

@@ -2,8 +2,10 @@
 
 //import React, { Component } from 'react';
 import React from "react";
-//import ReactDOM from 'react-dom';
 import "./Card.css";
+
+import { connect } from "react-redux";
+import { setActiveCard } from "./cardActions";
 
 class Card extends React.Component {
   constructor(props) {
@@ -20,6 +22,7 @@ class Card extends React.Component {
     console.log(
       this.props.title + " click: " + event.clientX + ", " + event.clientY
     );
+    this.props.setActiveCard(this.props.title);
   };
 
   onMouseMove = evt => {
@@ -37,7 +40,7 @@ class Card extends React.Component {
         _this.setState({ mouseX: 0, mouseY: 0 });
       }, 1000)
     });
-    console.log(this.props.title + " mouseLeave");
+    //console.log(`${this.props.title} mouseLeave`);
   };
 
   getCardStyle() {
@@ -116,4 +119,11 @@ class Card extends React.Component {
   }
 }
 
-export default Card;
+// Map Redux actions to component props
+const mapDispatchToProps = dispatch => {
+  return {
+    setActiveCard: card => dispatch(setActiveCard(card))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Card);

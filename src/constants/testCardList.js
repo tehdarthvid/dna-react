@@ -1,6 +1,6 @@
 /* @darthvid DNA (React) input.js */
 
-const cardList = [
+const testCardList = [
   // childhood
   {
     title: "Star Wars",
@@ -192,4 +192,4 @@ const cardList = [
   }
 ];
 
-export default cardList;
+export default testCardList;
