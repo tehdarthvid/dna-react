@@ -8,7 +8,7 @@ export default function activeCardReducer(
   //const activeCard = state.activeCard;
   switch (action.type) {
     case SET_ACTIVE_CARD:
-      console.log(`SET_ACTIVE_CARD: ${action.card}`);
+      console.log(`SET_ACTIVE_CARD: ${action.card.title}`);
       /*
       Object.assign({}, state, {
         activeCard: action.card

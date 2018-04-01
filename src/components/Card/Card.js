@@ -5,7 +5,7 @@ import React from "react";
 import "./Card.css";
 
 import { connect } from "react-redux";
-import { setActiveCard } from "./cardActions";
+import { setActiveCard } from "../../actions/cardActions";
 
 class Card extends React.Component {
   constructor(props) {
@@ -17,13 +17,6 @@ class Card extends React.Component {
       fnMouseLeaveDelay: null
     };
   }
-
-  onClick = event => {
-    console.log(
-      this.props.title + " click: " + event.clientX + ", " + event.clientY
-    );
-    this.props.setActiveCard(this.props.title);
-  };
 
   onMouseMove = evt => {
     //console.log(this.props.title + " move: " + evt.clientX + ", " + evt.clientY);
@@ -48,8 +41,6 @@ class Card extends React.Component {
     let rY = 0;
 
     if (undefined !== this.refs.card) {
-      //let cardMidX = 0;
-      //let cardMidY = 0;
       let rect = this.refs.card.getBoundingClientRect();
 
       if (0 !== this.state.mouseX) {
@@ -72,8 +63,6 @@ class Card extends React.Component {
     let tY = 0;
 
     if (undefined !== this.refs.card) {
-      //let cardMidX = 0;
-      //let cardMidY = 0;
       let rect = this.refs.card.getBoundingClientRect();
 
       if (0 !== this.state.mouseX) {
@@ -99,9 +88,14 @@ class Card extends React.Component {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         onMouseMove={this.onMouseMove}
-        onClick={this.onClick}
+        onDoubleClick={this.onDoubleClick}
       >
-        <div className="card" ref="card" style={this.getCardStyle()}>
+        <div
+          className="card"
+          ref="card"
+          style={this.getCardStyle()}
+          onClick={this.onClick}
+        >
           <div className="card-bg" style={this.getCardBgStyle()}>
             <img
               className="card-img"
@@ -117,13 +111,37 @@ class Card extends React.Component {
       </div>
     );
   }
+
+  onClick = event => {
+    console.log(
+      `${this.props.title} click: ${event.clientX}, ${event.clientY}`
+    );
+    // setActiveCard added to props via mapDispatchToProps + connect.
+    //this.props.setActiveCard(this.props);
+  };
+
+  onDoubleClick = event => {
+    console.log(
+      `${this.props.title} doubleclick: ${event.clientX}, ${event.clientY}`
+    );
+    // setActiveCard added to props via mapDispatchToProps + connect.
+    this.props.setActiveCard(this.props);
+  };
 }
 
-// Map Redux actions to component props
+// Map Redux actions to component props via connect.
 const mapDispatchToProps = dispatch => {
   return {
-    setActiveCard: card => dispatch(setActiveCard(card))
+    // setActiveCard key + ()=> will be added to Component props via connect.
+    // ()=> calls dispatch({action object}).
+    setActiveCard: card => {
+      console.log(`dispatch ${card.title}`);
+      dispatch(setActiveCard(card));
+    }
   };
 };
 
+// Connect React Component to Redux, then export the component.
+// Adds function in mapDispatchToProps to Component.props.
+// After connection, trigger dispatch by calling props.function().
 export default connect(null, mapDispatchToProps)(Card);

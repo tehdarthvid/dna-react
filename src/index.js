@@ -11,11 +11,15 @@ import configureStore from "./store/configureStore";
 
 //import Header from "./components/Header/Header";
 import ActiveDeckContainer from "./containers/ActiveDeckContainer";
+import FullImg from "./components/FullImg/FullImg";
 
 const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
-    <ActiveDeckContainer />
+    <div>
+      <FullImg />
+      <ActiveDeckContainer />
+    </div>
   </Provider>,
   document.getElementById("root")
 );
