@@ -8,17 +8,17 @@ import { connect } from "react-redux";
 // React component
 class Header extends Component {
   render() {
-    const { activeCard } = this.props;
-    return <div>{activeCard}</div>;
+    //const { activeCard } = this.props;
+    return <div>{props.activeCard}</div>;
   }
 }
 
-// NOT REQUIRED
 /*
+// NOT REQUIRED
 Header.propTypes = {
   valuey: PropTypes.number.isRequired,
   onIncreaseClick: PropTypes.func.isRequired,
-  activeCard: PropTypes.string.isRequired
+  activeCard: PropTypes.bool.isRequired
 };
 */
 

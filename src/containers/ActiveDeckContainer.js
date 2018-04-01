@@ -6,11 +6,7 @@ import Deck from "../components/Deck/Deck";
 
 class ActiveDeckContainer extends React.Component {
   render() {
-    return (
-      <div>
-        <Deck cardList={this.props.cardList} />
-      </div>
-    );
+    return <Deck cardList={this.props.cardList} />;
   }
 }
 

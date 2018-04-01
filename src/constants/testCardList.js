@@ -192,4 +192,9 @@ const testCardList = [
   }
 ];
 
+/*
+const testCardList2 = testCardList.map(elem => {
+  return { key: elem.title, ...elem };
+});
+*/
 export default testCardList;

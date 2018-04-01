@@ -15,9 +15,7 @@ import ActiveDeckContainer from "./containers/ActiveDeckContainer";
 const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
-    <div>
-      <ActiveDeckContainer />
-    </div>
+    <ActiveDeckContainer />
   </Provider>,
   document.getElementById("root")
 );
