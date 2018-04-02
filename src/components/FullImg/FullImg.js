@@ -4,21 +4,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { setActiveCard } from "../../actions/cardActions";
-import AtomicImage from "../AtomicImage/AtomicImage";
+//import AtomicImage from "../AtomicImage/AtomicImage";
 
 const modalRatio = 0.8;
 
 // React component
 class FullImg extends Component {
+  /*
   constructor(props) {
     super(props);
-
     this.state = {
       isVisible: false,
       width: null,
       height: null
     };
   }
+  */
 
   onClick = event => {
     console.log(
@@ -42,14 +43,12 @@ class FullImg extends Component {
     document.removeEventListener("keydown", this.onKeyDown, false);
   };
 
-  onImgLoad = result => {
+  onImgLoad = ({ target: img }) => {
     console.log(
-      `${this.props.activeCard.title} cbImgLoad: ${result.width}, ${
-        result.height
-      }`
+      `${this.props.activeCard.title} cbImgLoad: ${img.width}, ${img.height}`
     );
-    if ("undefined" != typeof window) {
-      this.setState({ width: result.width, height: result.height });
+    if ("undefined" !== typeof window) {
+      //this.setState({ width: img.width, height: img.height });
     }
   };
 
@@ -77,7 +76,6 @@ class FullImg extends Component {
         id="modalZoom"
         className="modal"
         onClick={this.onClick}
-        onClick={this.onClick}
         style={{ display: this.props.activeCard.title ? "block" : "none" }}
       >
         <span id="cbtnZoom" className="closeX">
@@ -88,6 +86,7 @@ class FullImg extends Component {
           id="imgZoom"
           onLoad={this.onImgLoad}
           src={this.props.activeCard.bgImage}
+          alt={this.props.activeCard.title}
           width={this.getFittedImgWidth()}
           height={this.getFittedImgHeight()}
         />
