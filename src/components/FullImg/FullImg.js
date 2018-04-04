@@ -53,46 +53,52 @@ class FullImg extends Component {
   };
 
   getFittedImgWidth = () => {
-    let newWidth =
+    let res =
       window.innerWidth < window.innerHeight
-        ? window.innerWidth * modalRatio
+        ? `${Math.floor(window.innerWidth * modalRatio)}px`
         : null;
 
-    return newWidth ? `${newWidth}px` : null;
+    return res;
+    //return newWidth ? `${newWidth}px` : null;
   };
 
   getFittedImgHeight = () => {
-    let newHeight =
+    let res =
       window.innerHeight < window.innerWidth
-        ? window.innerHeight * modalRatio
+        ? `${Math.floor(window.innerHeight * modalRatio)}px`
         : null;
 
-    return newHeight ? `${newHeight}px` : null;
+    return res;
+    //return newHeight ? `${newHeight}px` : null;
   };
 
   render() {
-    return (
-      <div
-        id="modalZoom"
-        className="modal"
-        onClick={this.onClick}
-        style={{ display: this.props.activeCard.title ? "block" : "none" }}
-      >
-        <span id="cbtnZoom" className="closeX">
-          &times;
-        </span>
-        <img
-          className="modal-content"
-          id="imgZoom"
-          onLoad={this.onImgLoad}
-          src={this.props.activeCard.bgImage}
-          alt={this.props.activeCard.title}
-          width={this.getFittedImgWidth()}
-          height={this.getFittedImgHeight()}
-        />
-        <div id="txtModal">{this.props.activeCard.title}</div>
-      </div>
-    );
+    let jsx = null;
+    if (this.props.activeCard.title) {
+      jsx = (
+        <div
+          id="modalZoom"
+          className="modal"
+          onClick={this.onClick}
+          style={{ display: this.props.activeCard.title ? "block" : "none" }}
+        >
+          <span id="cbtnZoom" className="closeX">
+            &times;
+          </span>
+          <img
+            className="modal-content"
+            id="imgZoom"
+            onLoad={this.onImgLoad}
+            src={this.props.activeCard.bgImage}
+            alt={this.props.activeCard.title}
+            width={this.getFittedImgWidth()}
+            height={this.getFittedImgHeight()}
+          />
+          <div id="txtModal">{this.props.activeCard.title}</div>
+        </div>
+      );
+    }
+    return jsx;
   }
 }
 

@@ -60,7 +60,10 @@ const testCardList = [
   {
     title: "新世紀 エヴァンゲリオン",
     bgImage:
-      "https://s3-ap-northeast-1.amazonaws.com/sk2q169cx9pfoawet3et/ditim/1995.10.04+%E3%80%8C%E6%96%B0%E4%B8%96%E7%B4%80%E3%82%A8%E3%83%B4%E3%82%A1%E3%83%B3%E3%82%B2%E3%83%AA%E3%82%AA%E3%83%B3%E3%80%8D+75442l.jpg",
+      "https://ia.media-imdb.com/images/M/MV5BYjY1Y2ZmNDctZWQ3Yy00MTE3LTk2M2QtMjQ0MDA5ODVjMDEyXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg",
+    //bgImage:"https://i.pinimg.com/originals/4d/67/a0/4d67a0fe6038e3d5dbb151edfe76f78e.jpg",
+    //bgImage: "https://s3-ap-northeast-1.amazonaws.com/sk2q169cx9pfoawet3et/ditim/1995.10.04+%E3%80%8C%E6%96%B0%E4%B8%96%E7%B4%80%E3%82%A8%E3%83%B4%E3%82%A1%E3%83%B3%E3%82%B2%E3%83%AA%E3%82%AA%E3%83%B3%E3%80%8D+75442l.jpg",
+    //bgImage: "https://wallup.net/wp-content/uploads/2016/05/14/24082-Neon_Genesis_Evangelion-Ayanami_Rei-Ikari_Shinji-Asuka_Langley_Soryu-EVA_Unit_02-anime-Gendo_Ikari-EVA_Unit_00-EVA_Unit_01-748x1068.jpg",
     date: "4 Oct 1995 – 27 Mar 1996"
   },
   // college
@@ -144,8 +147,8 @@ const testCardList = [
   },
   {
     title: "The iDOLM@STER",
-    bgImage: "https://myanimelist.cdn-dena.com/images/anime/9/41085.jpg",
-    date: ">8 Jul 2011 - 23 Dec 2011"
+    bgImage: "https://frozenmyst.files.wordpress.com/2011/12/826377.jpg",
+    date: "8 Jul 2011 - 23 Dec 2011"
   },
   {
     title: "キルラキル",
@@ -155,8 +158,7 @@ const testCardList = [
   },
   {
     title: "月刊少女野崎くん",
-    bgImage:
-      "http://i.imacdn.com/ta/2016/09/23/a10298f1175e096c_33308f9738776dd4_29605414746065143154671.jpg",
+    bgImage: "https://planetdp.org//covers/big/dp16553.jpg",
     date: "7 Jul 2014 - 22 Sep 2014"
   },
   // current
