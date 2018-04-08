@@ -1,4 +1,8 @@
-# dna
+# dna-react
+
+** No longer being updated! **
+
+New version at https://github.com/tehdarthvid/dna-vue.
 
 Personal influence DNA project for ReactJS study.
 
